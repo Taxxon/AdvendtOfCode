@@ -8,22 +8,34 @@ public class day_1{
         int a = 0;
         int b = 0;
         int sum = 0;
-        int start = Integer.parseInt("" +  input.charAt(0));
+        int c;
+        int i =0;
 
         try {
-            for (int i = 0; i < input.length(); i++) {
+            for (i = 0; i < (input.length() / 2); i++) {
+                c = input.length() / 2;
                 a = Integer.parseInt("" + input.charAt(i));
-                b = Integer.parseInt("" + input.charAt(i + 1));
+                b = Integer.parseInt("" + input.charAt(c + i));
                 if (a == b) {
                     sum += a;
+                    System.out.println(i);
                 }
             }
-        } catch (StringIndexOutOfBoundsException e){
 
+            for (i = 0; i < (input.length() / 2); i++) {
+                c = input.length() / 2;
+                a = Integer.parseInt("" + input.charAt((c)+ i));
+                b = Integer.parseInt("" + input.charAt(i));
+            } if (a == b) {
+                sum += a;
+            }
+        } catch (StringIndexOutOfBoundsException e){
+            System.out.println("Hello");
+            System.out.println(a);
+            System.out.println(b);
+            System.out.println(i);
         }
-        if (start == a) {
-            sum += a;
-        }
+
         System.out.println(sum);
     }
 }
