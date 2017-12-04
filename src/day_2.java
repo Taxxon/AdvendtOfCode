@@ -6,14 +6,11 @@ import java.util.Scanner;
 public class day_2 {
     public static void main(String[] args) {
         String row1;
-        int first = 0;
-        int max = 0;
-        int smal = 100000;
+        int first;
+        int second;
         int sum = 0;
         Scanner myScanner = new Scanner(System.in);
         for (int i = 0; i <= 15; i++) {
-            max = 0;
-            smal = 10000;
             String[] fields;
             try {
                 row1 = myScanner.nextLine();
@@ -22,24 +19,33 @@ public class day_2 {
                 continue;
             }
             for (int j = 0; j <= fields.length; j++) {
-                try {
-                    try {
-                        first = Integer.parseInt(fields[j]);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        continue;
+                for (int k = j +1; k <= fields.length; k++) {
+                        try {
+                            first = Integer.parseInt(fields[j]);
+                            second = Integer.parseInt(fields[k]);
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            continue;
+                        }
+                    if ((first % second) == 0) {
+                        if (first > second) {
+                            sum += (first / second);
+                            System.out.println(first / second);
+                        } else {
+                            sum += (second / first);
+                            System.out.println(second / first);
+                        }
+                    } else if((second % first) == 0){
+                        if (first > second) {
+                            sum += (first / second);
+                            System.out.println(first / second);
+                        } else {
+                            sum += (second / first);
+                            System.out.println(second / first);
+                        }
                     }
-                } catch (NumberFormatException e) {
-                    continue;
-                }
-                if (max < first) {
-                    max = first;
-                } if (smal > first) {
-                    smal = first;
                 }
             }
-            System.out.println(smal);
-            System.out.println(max);
-            sum += (max - smal);
+            System.out.println(row1);
         }
         System.out.println(sum);
     }
