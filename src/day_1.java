@@ -39,3 +39,4 @@ public class day_1{
         System.out.println(sum);
     }
 }
+
